@@ -71,8 +71,6 @@ Example commands:
 
 A simple testbench will toggle `inp_stream` and record `out_stream` to verify behavior for positive and overlapping or non-overlapping matches.
 
-```
-
 ## Synthesis notes
 
 - Use synchronous resets where possible for FPGA friendliness.
