@@ -59,39 +59,18 @@ module sequence_detector #(
 Prerequisites:
 - iverilog
 - gtkwave
-- (optional) make
-
+- 
 Example commands:
 
 1. Compile and run:
-   - iverilog -o tb.vvp sequence_detector.v tb_sequence_detector.v
+   - iverilog -o tb.vvp seq_detector.v tb_seq_detector.v
    - vvp tb.vvp
 
-2. Generate waveform (inside your testbench you can dump a VCD file, e.g., `dump.vcd`), then open:
+2. Then open:
    - gtkwave dump.vcd
 
-A simple testbench will toggle `bit_in` and record `detected` to verify behavior for positive and overlapping matches.
+A simple testbench will toggle `inp_stream` and record `out_stream` to verify behavior for positive and overlapping or non-overlapping matches.
 
-Example iverilog command (replace filenames as needed):
-```
-iverilog -o sim.vvp sequence_detector.v tb_sequence_detector.v
-vvp sim.vvp
-gtkwave waveform.vcd
-```
-
-## Writing a testbench
-
-A minimal testbench should:
-- Drive `clk` and `rst_n`
-- Apply a sequence of bits on `bit_in`
-- Monitor `detected` and optionally print a message when detection happens
-- Dump signals to a VCD file for inspection:
-```verilog
-initial begin
-  $dumpfile("waveform.vcd");
-  $dumpvars(0, tb_sequence_detector);
-  // generate stimulus...
-end
 ```
 
 ## Synthesis notes
@@ -99,24 +78,6 @@ end
 - Use synchronous resets where possible for FPGA friendliness.
 - For synthesis (Vivado, Quartus, etc.), put I/O constraints in the appropriate constraints file (XDC for Vivado, QSF for Quartus).
 - Remove testbench files from synthesis runs.
-- Use registers for state encoding. Consider one-hot encoding for small state machines if you need faster timing and have spare LUTs.
-
-Vendor-specific tips:
-- Xilinx Vivado: create an HDL wrapper if integrating the detector into a larger design and run synthesis/implementation flows in Vivado.
-- Intel Quartus: add the Verilog file to your project, assign pins in the Pin Planner or QSF file.
-
-## How to change the detected sequence
-
-- If the implementation uses explicit states for a specific sequence (e.g., 1011), change the state transition logic and the final detection condition.
-- For a parameterized detector (e.g., shift-register + pattern compare), change the pattern constant and the width parameter.
-
-Parameterizable approach example (conceptual):
-- Shift incoming bits into an N-bit register each clock.
-- When register == PATTERN, raise `detected`.
-- This is simple but can use more logic for wide patterns and care must be taken for overlapping matches (shift approach naturally supports overlap).
-
-## Example: Overlap handling
-To detect overlapping sequences (e.g., sequence `111` in stream `1111` should yield two detections), choose transitions that return to the correct matching state after a match rather than resetting to S0.
 
 ## Verification checklist
 - [ ] Unit tests (testbench vectors) for non-overlapping pattern
@@ -139,14 +100,5 @@ This project is licensed under the MIT License — see the LICENSE file for deta
 
 ## References / Learning resources
 - Digital Design and Computer Architecture — Harris & Harris (FSM chapters)
-- Xilinx/Intel FPGA documentation on state machines and synthesis guidelines
 - Icarus Verilog documentation: http://iverilog.icarus.com/
 - GTKWave documentation: http://gtkwave.sourceforge.net/
-
-If you want, I can:
-- Generate a concrete Verilog implementation (Moore or Mealy) for a specific sequence (e.g., 1011),
-- Provide a ready-to-run testbench,
-- Add example synthesis constraints for Vivado/Quartus,
-- Or make the detector parameterizable by sequence and length.
-
-Tell me which option you prefer and the target sequence/requirements.
