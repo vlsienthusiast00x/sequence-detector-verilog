@@ -59,7 +59,7 @@ module sequence_detector #(
 Prerequisites:
 - iverilog
 - gtkwave
-- 
+
 Example commands:
 
 1. Compile and run:
