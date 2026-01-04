@@ -4,7 +4,6 @@ A small, portable Verilog implementation of a binary sequence detector. This rep
 
 ## Features
 - Simple, well-documented Verilog implementation of a sequence detector
-- Option to implement as Moore or Mealy machine (trade-offs explained below)
 - Example testbench for simulation
 - Instructions for running simulations using Icarus Verilog and viewing waveforms with GTKWave
 - Notes for synthesis with vendor tools (Vivado/Quartus)
