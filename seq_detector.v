@@ -1,12 +1,12 @@
 module sequence_detector #(
-    parameter SEQ_WIDTH = 4,
-    parameter [SEQ_WIDTH-1:0] MATCH_SEQ = 4'b1001, 
-    parameter overlapping = 0
+    parameter SEQ_WIDTH = 4,                        // width of the sequence to be matched
+    parameter [SEQ_WIDTH-1:0] MATCH_SEQ = 4'b1001,  // Change this according to the required sequence to be matched
+    parameter overlapping = 1                       // Toggle this for 1 for overlapping detection and 0 for non-overlapping detection
 )(
     input  wire clk,
     input  wire rst,
-    input  wire inp_stream,
-    output wire out_stream
+    input  wire inp_stream,                         // Input bitstream
+    output wire out_stream                          // Output bitstream
 );
 
 reg [SEQ_WIDTH-1:0] matcher;
