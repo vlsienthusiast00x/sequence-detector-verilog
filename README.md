@@ -97,6 +97,6 @@ Specify a license for your repository (e.g., MIT). If you don't have one yet, ad
 This project is licensed under the MIT License — see the LICENSE file for details.
 
 ## References / Learning resources
-- Digital Design and Computer Architecture — Harris & Harris (FSM chapters)
+- Digital Design — Morris Mano (FSM chapters)
 - Icarus Verilog documentation: http://iverilog.icarus.com/
 - GTKWave documentation: http://gtkwave.sourceforge.net/
