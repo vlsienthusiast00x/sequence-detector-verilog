@@ -2,8 +2,6 @@
 
 A small, portable Verilog implementation of a binary sequence detector. This repository demonstrates how to design, simulate, and synthesize a finite-state machine that detects a target bit sequence on a serial input stream. It is suitable for learning FSM design (Moore vs Mealy), writing testbenches, and running simulations with common open-source tools.
 
-> Note: This README is intentionally generic so you can adapt it to any target sequence. Replace filenames, sequence, and commands with the actual files in this repo if they differ.
-
 ## Features
 - Simple, well-documented Verilog implementation of a sequence detector
 - Option to implement as Moore or Mealy machine (trade-offs explained below)
