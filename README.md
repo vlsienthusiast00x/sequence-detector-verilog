@@ -6,7 +6,6 @@ A small, portable Verilog implementation of a binary sequence detector. This rep
 - Simple, well-documented Verilog implementation of a sequence detector
 - Example testbench for simulation
 - Instructions for running simulations using Icarus Verilog and viewing waveforms with GTKWave
-- Notes for synthesis with vendor tools (Vivado/Quartus)
 
 ## Typical project layout
 - sequence_detector.v        — Verilog module implementing the FSM
