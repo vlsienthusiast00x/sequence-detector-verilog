@@ -4,9 +4,9 @@ module sequence_detector #(
     parameter SEQ_WIDTH = 4,
     parameter [SEQ_WIDTH-1:0] MATCH_SEQ = 4'b1001, 
     parameter overlapping = 0,
-    parameter DIVISOR = 1_000_000   // divide 1 MHz down to 1 Hz
+    parameter DIVISOR = 12_500_000   // divide 25 MHz down to 1 Hz
 )(
-    input  wire clk,       // 1 MHz input clock
+    input  wire clk,       // 25 MHz input clock
     input  wire rst,
     input  wire inp_stream,
     output wire out_stream
@@ -16,7 +16,7 @@ module sequence_detector #(
     reg [$clog2(DIVISOR)-1:0] counter = 0;
     reg slow_clk = 0;
 
-    // Generate slow clock
+    // Generate slow clock (1 Hz)
     always @(posedge clk or posedge rst) begin
         if (rst) begin
             counter  <= 0;
