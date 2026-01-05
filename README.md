@@ -35,6 +35,8 @@ State diagram (example for sequence 1011, Mealy):
 - S2 (saw 10)
 - S3 (saw 101)
 - On receiving final 1 from S3 -> assert `detected` and transition appropriately to allow overlap detection (e.g., to S1 if last bit `1` can be the start of new sequence).
+<img width="305" height="530" alt="image" src="https://github.com/user-attachments/assets/70e7c9b2-0338-41bd-bdd8-26a43c39b0b7" />
+
 
 ## Example module interface
 
